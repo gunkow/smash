@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: ls; pwd; ls ../
+      - run: ls ${{ github.workspace }}
       - name: execute py script
         run: |
-          python selector.py
+          python ${{ github.workspace }}/selector.py
