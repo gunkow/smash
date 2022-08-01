@@ -20,4 +20,4 @@ jobs:
     steps:
       - name: execute py script
         run: |
-          selector.py
+          python selector.py
