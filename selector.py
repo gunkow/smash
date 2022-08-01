@@ -30,11 +30,10 @@ for f in new_files:
         tags.add(matchers[m])
 
 tags = map(lambda m: f"{m}@{ts}", tags)
+print(f"tags: {tags}")
 
 first_commit = repo.revparse_single("HEAD")
 tagger = pygit2.Signature("github CI", "noreply@carbonre.tech")
-
-
 for tag in tags:
   print("(tag, first_commit.oid.hex, pygit2.GIT_OBJ_COMMIT, tagger)", (tag, first_commit.oid.hex, pygit2.GIT_OBJ_COMMIT, tagger, ""))
   print(repo.create_tag(tag, first_commit.oid.hex, pygit2.GIT_OBJ_COMMIT, tagger, ""))
