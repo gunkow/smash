@@ -35,6 +35,6 @@ first_commit = repo.revparse_single("HEAD")
 tagger = pygit2.Signature("github CI", "noreply@carbonre.tech")
 
 for tag in tags:
-  print(repo.create_tag(tag, first_commit.oid.hex, pygit2.GIT_OBJ_COMMIT, tagger))
+  print(repo.create_tag(tag, first_commit.oid.hex, pygit2.GIT_OBJ_COMMIT, tagger, ""))
 
 print(list(tags))
