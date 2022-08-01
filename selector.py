@@ -40,6 +40,4 @@ for tag in tags:
   print(repo.create_tag(tag, first_commit.oid.hex, pygit2.GIT_OBJ_COMMIT, tagger, ""))
 
 ori_remote = repo.remotes[0]
-ori_remote.push(
-        ori_remote, "refs/tags/%s:refs/tags/%s" % (tags[0], tags[0])
-    )
+ori_remote.push("")
