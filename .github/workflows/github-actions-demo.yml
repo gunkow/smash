@@ -15,7 +15,7 @@ jobs:
           ls ${{ github.workspace }}
       - name: Prepare repository
         run: git fetch --unshallow --tags
-      - run: git diff --name-only origin/main origin/${GITHUB_HEAD_REF}
+      - run: git diff --name-only origin/master origin/${GITHUB_HEAD_REF}
       - run: pip install pygit2
       - run: python ${{ github.workspace }}/selector.py
       - run: echo "🍏 This job's status is ${{ job.status }}."
