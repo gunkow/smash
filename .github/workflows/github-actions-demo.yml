@@ -14,8 +14,8 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      -name: py
-        run: python ${{ github.workspace }}/selector.py
+      # -name: py
+      #   run: python ${{ github.workspace }}/selector.py
       - run: echo "🍏 This job's status is ${{ job.status }}."
   build:
     runs-on: ubuntu-latest
