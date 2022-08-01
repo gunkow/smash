@@ -14,6 +14,7 @@ matchers = {
    # "src/nada/app": "nada.test",
   #  "src/nada/utils/lambda": "lambda-produce.test",
     "app": "lambda-deploy.test",
+    ".github/": "wow"
   #  "src/infra/aws/workload/nada": "infra-nada.test",
   #  "src/infra/aws/management/dns": "dns.test",
   #  "src/infra/aws/management/stacksets": "stacksets.test",
@@ -29,5 +30,7 @@ for f in new_files:
         tags.add(matchers[m])
 
 tags = map(lambda m: f"{m}@{ts}", matchers)
+for tag in tags:
+  print(repo.create_tag(tag))
 
 print(list(tags))
