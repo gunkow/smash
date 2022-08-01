@@ -12,9 +12,8 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      # - name: Prepare repository
-      #   run: git fetch --unshallow --tags
-      - run: pip install pygit2
-      - run: python ${{ github.workspace }}/selector.py
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Prepare repositoryy
+        run: git fetch --unshallow --tags
       - run: git diff --name-only HEAD^ HEAD
+      - run: pip install pygit2
+      - run: python ${{ github.workspace }}/selector.py $(git diff --name-only HEAD^ HEAD)
