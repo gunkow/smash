@@ -41,5 +41,5 @@ for tag in tags:
 
 ori_remote = repo.remotes[0]
 ori_remote.push(
-        ori_remote, "refs/tags/%s:refs/tags/%s" % (tagname, tagname)
+        ori_remote, "refs/tags/%s:refs/tags/%s" % (tags[0], tags[0])
     )
