@@ -2,9 +2,9 @@
 
 import sys
 import datetime as dt
-from pygit2 import Repository
+import pygit2
 
-repo = Repository('.git')
+repo = pygit2.Repository('.git')
 
 new_files = sys.argv[1:]
 
