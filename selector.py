@@ -29,7 +29,7 @@ for f in new_files:
       if f.startswith(m):
         tags.add(matchers[m])
 
-tags = map(lambda m: f"{m}@{ts}", matchers)
+tags = map(lambda m: f"{m}@{ts}", tags)
 
 first_commit = repo.revparse_single("HEAD")
 tagger = pygit2.Signature("github CI", "noreply@carbonre.tech")
