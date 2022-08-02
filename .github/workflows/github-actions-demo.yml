@@ -15,6 +15,12 @@ jobs:
       - name: Prepare repositoryy
         run: git fetch --unshallow --tags
       - run: git diff --name-only HEAD^ HEAD
-      - run: pip install pygit2
-      - run: python ${{ github.workspace }}/selector.py $(git diff --name-only HEAD^ HEAD)
-      - run: ./push_tags.sh
+      - run: echo "${{ secrets.GITHUB_TOKEN }}"
+      - run: pip install PyGithub
+      - run: python ${{ github.workspace }}/selector.py ${{ secrets.GITHUB_TOKEN }} $(git diff --name-only HEAD^ HEAD)
+      - run: ./tags_to_actions.sh
+# on: [tag]
+# - run deploy_terrafrom.sh
+# on: [tag]
+# - run deploy_terrafrom.sh
+
