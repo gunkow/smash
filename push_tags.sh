@@ -7,5 +7,5 @@ while IFS= read -r line
 do
   echo "$line"
   git tag $line
-  git push $line
+  git push origin $line
 done < "$input"
