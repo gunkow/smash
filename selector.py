@@ -35,6 +35,10 @@ for f in new_files:
 tags = list(map(lambda m: f"{m}@{ts}", tags))
 print(f"tags: {tags}")
 
+with open('tags.txt', 'w') as f:
+    f.write("\n".join(tags))
+
+
 first_commit = repo.revparse_single("HEAD")
 tagger = pygit2.Signature("github CI", "noreply@carbonre.tech")
 for tag in tags:

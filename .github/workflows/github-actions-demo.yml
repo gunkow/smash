@@ -19,3 +19,4 @@ jobs:
       - run: git push origin test1
       - run: pip install pygit2
       - run: python ${{ github.workspace }}/selector.py $(git diff --name-only HEAD^ HEAD)
+      - run: ./
