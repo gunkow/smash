@@ -2,7 +2,7 @@
 
 set -e
 export
-input="tags.txt"
+input="$GITHUB_WORKSPACE/tags.txt"
 while IFS= read -r line
 do
   echo "$line"
