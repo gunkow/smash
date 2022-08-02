@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 
 import sys
+import os
 import datetime as dt
 from github import Github
 
+print("GITHUB_TOKEN: ", os.environ.get("GITHUB_TOKEN"))
 github_token = sys.argv[1]
 new_files = sys.argv[2:]
+
+
 
 g = Github(github_token)
 for repo in g.get_user().get_repos():

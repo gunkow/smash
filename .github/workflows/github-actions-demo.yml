@@ -20,8 +20,9 @@ jobs:
       - run: echo "${{ secrets.GITHUB_TOKEN }}"
       - run: echo "${{ github.token }}"
       - run: pip install PyGithub
-
       - run: python ${{ github.workspace }}/selector.py ${{ secrets.GITHUB_TOKEN }} $(git diff --name-only HEAD^ HEAD)
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: ./tags_to_actions.sh
 # on: [tag]
 # - run deploy_terrafrom.sh
