@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
@@ -21,9 +23,8 @@ jobs:
       - run: echo "${{ github.token }}"
       - run: pip install PyGithub
       - run: python ${{ github.workspace }}/selector.py ${{ secrets.GITHUB_TOKEN }} $(git diff --name-only HEAD^ HEAD)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: ./tags_to_actions.sh
+
 # on: [tag]
 # - run deploy_terrafrom.sh
 # on: [tag]
