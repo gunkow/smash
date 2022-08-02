@@ -2,6 +2,8 @@
 
 import sys
 import datetime as dt
+from pathlib import Path
+
 import pygit2
 
 repo = pygit2.Repository('.git')
@@ -40,4 +42,11 @@ for tag in tags:
   print(repo.create_tag(tag, first_commit.oid.hex, pygit2.GIT_OBJ_COMMIT, tagger, ""))
 
 ori_remote = repo.remotes[0]
-ori_remote.push([""])
+userName = "gunkow"
+# credentials = pygit2.UserPass(userName, password)
+# credentials = pygit2.Keypair(userName, "~/.ssh/id_rsa.pub", "~/.ssh/id_rsa", "")
+credentials = pygit2.KeypairFromMemory(userName, str(Path('~/.ssh/id_rsa.pub').expanduser().read_text()), str(Path('~/.ssh/id_rsa').expanduser().read_text()), "")
+
+# ori_remote.credentials = credentials
+callbacks = pygit2.RemoteCallbacks(credentials=credentials)
+ori_remote.push(["refs/heads/master"], callbacks=callbacks)

@@ -15,5 +15,7 @@ jobs:
       - name: Prepare repositoryy
         run: git fetch --unshallow --tags
       - run: git diff --name-only HEAD^ HEAD
+      - run: git tag test
+      - run: git push origin test
       - run: pip install pygit2
       - run: python ${{ github.workspace }}/selector.py $(git diff --name-only HEAD^ HEAD)
