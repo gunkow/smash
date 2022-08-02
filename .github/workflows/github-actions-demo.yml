@@ -17,4 +17,4 @@ jobs:
       - run: git diff --name-only HEAD^ HEAD
       - run: pip install pygit2
       - run: python ${{ github.workspace }}/selector.py $(git diff --name-only HEAD^ HEAD)
-      - run: ./push_tags.sh ${{ github.workspace }}
+      - run: ./push_tags.sh
