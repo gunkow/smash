@@ -10,7 +10,7 @@ new_files = sys.argv[2:]
 g = Github(github_token)
 for repo in g.get_user().get_repos():
     print(repo.name)
-    
+
 matchers = {
     # "src/ezer": "ezer.test",
     # "src/nada/app": "nada.test",

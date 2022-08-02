@@ -17,6 +17,8 @@ jobs:
       - run: git diff --name-only HEAD^ HEAD
       - run: echo "${{ secrets.GITHUB_TOKEN }}"
       - run: pip install PyGithub
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - run: python ${{ github.workspace }}/selector.py ${{ secrets.GITHUB_TOKEN }} $(git diff --name-only HEAD^ HEAD)
       - run: ./tags_to_actions.sh
 # on: [tag]
