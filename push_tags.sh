@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-set -e
-
+#set -e
+echo "push tags"
 input="tags.txt"
 while IFS= read -r line
 do
