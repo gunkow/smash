@@ -5,7 +5,7 @@ import os
 import datetime as dt
 from github import Github
 
-print("GITHUB_TOKEN: ", os.environ.get("GITHUB_TOKEN"))
+print("GH_TOKEN: ", os.environ.get("GH_TOKEN"))
 github_token = sys.argv[1]
 new_files = sys.argv[2:]
 
