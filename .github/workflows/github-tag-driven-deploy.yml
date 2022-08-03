@@ -7,7 +7,7 @@ on:
       - main
 jobs:
   Trigger-by-tag:
-    if: ${{ git }}
+#    if: ${{ git }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
