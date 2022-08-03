@@ -1,14 +1,49 @@
-name: Trigger by tag
-on:
-  push:
-    tags:
-      - '*'
-    branches:
-      - main
+#name: Trigger by tag
+#on:
+#  push:
+#    tags:
+#      - '*'
+#    branches:
+#      - main
+#jobs:
+#  Trigger-by-tag:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Check out repository
+#        uses: actions/checkout@v3
+#      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+#
+name: GitHub 2 Demo
+on: [push]
 jobs:
-  Trigger-by-tag:
+  Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+#    permissions:
+#      issues: write
+    env:
+      GHI_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v2
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - name: List files in the repositor
+        run: |
+          ls ${{ github.workspace }}
+      - name: Prepare repositoryy
+        run: git fetch --unshallow --tags
+      - run: git diff --name-only HEAD^ HEAD
+      - run: echo "${{ secrets.GITHUB_TOKEN }}"
+      - run: echo "${{ github.token }}"
+      - run: echo "$GHI_TOKEN"
+#      - run: gh auth login
+      - run: pip install PyGithub
+      - run: python ${{ github.workspace }}/selector.py ${{ secrets.GITHUB_TOKEN }} $(git diff --name-only HEAD^ HEAD)
+      - run: ./tags_to_actions.sh
+
+# on: [tag]
+# - run deploy_terrafrom.sh
+# on: [tag]
+# - run deploy_terrafrom.sh
+
