@@ -1,19 +1,14 @@
 name: Trigger by tag
-
 on:
   push:
     tags:
       - '*'
     branches:
       - main
-
-
 jobs:
   Trigger-by-tag:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-
-      - name: Run ShellCheck
-        uses: ludeeus/action-shellcheck@master
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
