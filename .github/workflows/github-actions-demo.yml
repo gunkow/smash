@@ -2,7 +2,7 @@ name: GitHub Actions Demo
 on:
   push:
     tags-ignore:
-      - *
+      - '*'
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
