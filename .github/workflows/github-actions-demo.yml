@@ -21,6 +21,7 @@ jobs:
       - run: git diff --name-only HEAD^ HEAD
       - run: echo "${{ secrets.GITHUB_TOKEN }}"
       - run: echo "${{ github.token }}"
+      - run: gh auth login
       - run: pip install PyGithub
       - run: python ${{ github.workspace }}/selector.py ${{ secrets.GITHUB_TOKEN }} $(git diff --name-only HEAD^ HEAD)
       - run: ./tags_to_actions.sh
