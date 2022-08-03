@@ -5,13 +5,10 @@ import os
 import datetime as dt
 from github import Github
 
-print("GH_TOKEN: ", len(os.environ.get("GHI_TOKEN")))
 github_token = sys.argv[1]
 new_files = sys.argv[2:]
 
-
-
-g = Github(github_token)
+g = Github(os.environ.get("GHI_TOKEN"))
 for repo in g.get_user().get_repos():
     print(repo.name)
 
