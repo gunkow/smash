@@ -1,4 +1,4 @@
-name: Lint (shell)
+name: Trigger by tag
 
 on:
   push:
