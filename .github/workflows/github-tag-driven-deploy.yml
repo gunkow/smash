@@ -6,18 +6,20 @@ on:
     branches:
       - main
 jobs:
+  Init:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
   Trigger-lambda:
     if: startsWith(github.ref_name, 'lambda-deploy')
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
-      - run: echo "LAMBDA The ${{ github.ref }} ${{ github.ref_name }} ${{ github.ref_type }}"
-  Trigger-wow:
-    if: startsWith(github.ref_name, 'wow')
+      - run: ls ${{ github.workspace }}
+      - run: echo "lambda-deploy The ${{ github.ref }} ${{ github.ref_name }} ${{ github.ref_type }}"
+  Trigger-infra-nada:
+    if: startsWith(github.ref_name, 'infra-nada')
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
-      - run: echo "WOW The ${{ github.ref }} ${{ github.ref_name }} ${{ github.ref_type }}"
+      - run: echo "infra-nada ${{ github.ref }} ${{ github.ref_name }} ${{ github.ref_type }}"
 
