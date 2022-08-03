@@ -6,11 +6,18 @@ on:
     branches:
       - main
 jobs:
-  Trigger-by-tag:
+  Trigger-lambda:
     if: startsWith(github.ref_name, 'lambda-deploy')
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-      - run: echo "💡 The ${{ github.ref }} ${{ github.ref_name }} ${{ github.ref_type }}"
+      - run: echo "LAMBDA The ${{ github.ref }} ${{ github.ref_name }} ${{ github.ref_type }}"
+  Trigger-wow:
+    if: startsWith(github.ref_name, 'wow')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - run: echo "WOW The ${{ github.ref }} ${{ github.ref_name }} ${{ github.ref_type }}"
 
