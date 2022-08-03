@@ -11,10 +11,11 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
+
       - name: Lambda deploy
         if: startsWith(github.ref_name, 'lambda-deploy')
         run: echo "lambda-deploy The ${{ github.ref }} ${{ github.ref_name }} ${{ github.ref_type }}"
+
       - name: Infra nada
         if: startsWith(github.ref_name, 'infra-nada')
         run: echo "infra-nada The ${{ github.ref }} ${{ github.ref_name }} ${{ github.ref_type }}"
-      - run: ls ${{ github.workspace }}
