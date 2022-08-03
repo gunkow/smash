@@ -7,10 +7,10 @@ on:
       - main
 jobs:
   Trigger-by-tag:
-    if: ${{ startsWith(github.ref_name, 'lambda-deploy' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
+        if: ${{ startsWith(github.ref_name, 'lambda-deploy' }}
         uses: actions/checkout@v3
       - run: echo "💡 The ${{ github.ref }} ${{ github.ref_name }} ${{ github.ref_type }}"
 
