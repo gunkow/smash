@@ -25,7 +25,7 @@ jobs:
       - run: pip install PyGithub
       - run: python ${{ github.workspace }}/selector.py ${{ secrets.GITHUB_TOKEN }} $(git diff --name-only HEAD^ HEAD)
       - run: ./tags_to_actions.sh
-# on: [tag]
+# on: [tag] 
 # - run deploy_terrafrom.sh
 # on: [tag]
 # - run deploy_terrafrom.sh
