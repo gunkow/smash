@@ -8,9 +8,12 @@ from github import Github
 github_token = sys.argv[1]
 new_files = sys.argv[2:]
 
+print(len(os.environ.get("GHI_TOKEN")))
 g = Github(os.environ.get("GHI_TOKEN"))
+# g = Github("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")
 for repo in g.get_user().get_repos():
-    print(repo.name)
+    if repo.name == "carbo":
+        print()
 
 matchers = {
     # "src/ezer": "ezer.test",
