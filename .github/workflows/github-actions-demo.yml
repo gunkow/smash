@@ -24,7 +24,16 @@ jobs:
       - run: pip install PyGithub
       - run: python ${{ github.workspace }}/selector.py ${{ secrets.GITHUB_TOKEN }} $(git diff --name-only HEAD^ HEAD)
       - run: ./tags_to_actions.sh
-
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Acquire Node Version
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "${{ env.NODE_VERSION }}"
+      - name: Authorize access to private packages
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
 # on: [tag]
 # - run deploy_terrafrom.sh
 # on: [tag]
